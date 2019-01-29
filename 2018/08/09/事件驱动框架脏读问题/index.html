@@ -89,12 +89,12 @@
 <meta property="og:site_name" content="任性的雨">
 <meta property="og:description" content="Twisted中遇到的事件驱动框架脏读问题在进行Scrapy中间件开发时遇到了全局变量被修改的问题。类比线程有一个线程安全问题， 协程也有协程安全的问题需要考虑。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/Users/nikan/Library/Application%20Support/typora-user-images/image-20190130004026274.png">
-<meta property="og:updated_time" content="2019-01-29T16:41:24.000Z">
+<meta property="og:image" content="http://qiniu-blog.cyhlucky.club/2019-01-29-164243.png">
+<meta property="og:updated_time" content="2019-01-29T16:42:48.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Twisted中遇到的事件驱动框架脏读问题">
 <meta name="twitter:description" content="Twisted中遇到的事件驱动框架脏读问题在进行Scrapy中间件开发时遇到了全局变量被修改的问题。类比线程有一个线程安全问题， 协程也有协程安全的问题需要考虑。">
-<meta name="twitter:image" content="http://yoursite.com/Users/nikan/Library/Application%20Support/typora-user-images/image-20190130004026274.png">
+<meta name="twitter:image" content="http://qiniu-blog.cyhlucky.club/2019-01-29-164243.png">
 
 
 
@@ -339,7 +339,7 @@
 <a id="more"></a>
 <h2><span id="wei-shi-me-hui-you-quot-xian-cheng-an-quan-quot-de-wen-ti-chu-xian-ni"><strong>为什么会有<code>&quot;线程安全&quot;</code>的问题出现呢？</strong></span><a href="#wei-shi-me-hui-you-quot-xian-cheng-an-quan-quot-de-wen-ti-chu-xian-ni" class="header-anchor">#</a></h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">parallel</span><span class="params">(iterable, count, callable, *args, **named)</span>:</span></span><br><span class="line">    <span class="string">"""Execute a callable over the objects in the given iterable, in parallel,</span></span><br><span class="line"><span class="string">    using no more than ``count`` concurrent calls.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Taken from: https://jcalderone.livejournal.com/24285.html</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    coop = task.Cooperator()</span><br><span class="line">    work = (callable(elem, *args, **named) <span class="keyword">for</span> elem <span class="keyword">in</span> iterable)</span><br><span class="line">    <span class="keyword">return</span> defer.DeferredList([coop.coiterate(work) <span class="keyword">for</span> _ <span class="keyword">in</span> range(count)])</span><br></pre></td></tr></table></figure>
 <p>并行函数是通过<code>Cooperator</code>实现的， 这个<code>Cooperator</code>的特点就是，同时添加多个任务， 一个Cooperator有一个定时器<code>Timer</code>来控制执行时间最多为10ms。也就是说，一个包含了100个item的<code>Cooperator</code>，一次理论上执行最多10ms后就得到下一个周期再执行了。</p>
-<p><img src="/Users/nikan/Library/Application Support/typora-user-images/image-20190130004026274.png" alt="image-20190130004026274"></p>
+<p><img src="http://qiniu-blog.cyhlucky.club/2019-01-29-164243.png" alt="image-20190130004026274"></p>
 <p>当这个<code>Cooperator</code>执行10毫秒后， Twisted框架自动跳出这个<code>Cooperator</code>切换到下一个要执行的任务（函数），如果之后的某一个函数修改了公共变量（全局变量或者类变量）， 再切回该<code>Cooperator</code>去访问该公共变量，这时候读到的值就发生了变化。这里的<code>&quot;线程安全&quot;</code>就是<code>脏读</code>现象。</p>
 <h2><span id="zheng-chang-qing-kuang-xia-hui-yu-dao-ma">正常情况下会遇到吗？</span><a href="#zheng-chang-qing-kuang-xia-hui-yu-dao-ma" class="header-anchor">#</a></h2><p>Scrapy使用<code>Cooperator</code>的本意是为了限制item的并发数，防止执行item相关的pipeline耗时过久。</p>
 <p>Scrapy的yield并不能简单地理解为 Python的协程， 而是经过Scrapy自己的一层包装后再递交给Twisted。</p>
