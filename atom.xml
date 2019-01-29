@@ -5,9 +5,9 @@
   
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://yoursite.com/"/>
+  <link href="http://nikan1996.coding.me/"/>
   <updated>2019-01-29T16:47:17.000Z</updated>
-  <id>http://yoursite.com/</id>
+  <id>http://nikan1996.coding.me/</id>
   
   <author>
     <name>Leo Ni</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>Twisted中遇到的事件驱动框架脏读问题</title>
-    <link href="http://yoursite.com/2018/08/09/Scrapy/%E4%BA%8B%E4%BB%B6%E9%A9%B1%E5%8A%A8%E6%A1%86%E6%9E%B6%E8%84%8F%E8%AF%BB%E9%97%AE%E9%A2%98/"/>
-    <id>http://yoursite.com/2018/08/09/Scrapy/事件驱动框架脏读问题/</id>
+    <link href="http://nikan1996.coding.me/2018/08/09/Scrapy/%E4%BA%8B%E4%BB%B6%E9%A9%B1%E5%8A%A8%E6%A1%86%E6%9E%B6%E8%84%8F%E8%AF%BB%E9%97%AE%E9%A2%98/"/>
+    <id>http://nikan1996.coding.me/2018/08/09/Scrapy/事件驱动框架脏读问题/</id>
     <published>2018-08-09T05:25:03.000Z</published>
     <updated>2019-01-29T16:47:17.000Z</updated>
     
@@ -33,14 +33,14 @@
     </summary>
     
     
-      <category term="event-driven" scheme="http://yoursite.com/tags/event-driven/"/>
+      <category term="event-driven" scheme="http://nikan1996.coding.me/tags/event-driven/"/>
     
   </entry>
   
   <entry>
     <title>Python编码风格规范</title>
-    <link href="http://yoursite.com/2018/07/30/PythonCodeStyle/Python%E7%BC%96%E7%A0%81%E9%A3%8E%E6%A0%BC%E8%A7%84%E8%8C%83/"/>
-    <id>http://yoursite.com/2018/07/30/PythonCodeStyle/Python编码风格规范/</id>
+    <link href="http://nikan1996.coding.me/2018/07/30/PythonCodeStyle/Python%E7%BC%96%E7%A0%81%E9%A3%8E%E6%A0%BC%E8%A7%84%E8%8C%83/"/>
+    <id>http://nikan1996.coding.me/2018/07/30/PythonCodeStyle/Python编码风格规范/</id>
     <published>2018-07-30T06:54:21.000Z</published>
     <updated>2019-01-29T17:46:45.000Z</updated>
     
@@ -56,14 +56,14 @@
     </summary>
     
     
-      <category term="codestyle python" scheme="http://yoursite.com/tags/codestyle-python/"/>
+      <category term="codestyle python" scheme="http://nikan1996.coding.me/tags/codestyle-python/"/>
     
   </entry>
   
   <entry>
     <title>简历</title>
-    <link href="http://yoursite.com/2018/07/29/Me/%E5%85%B3%E4%BA%8E%E6%88%91/"/>
-    <id>http://yoursite.com/2018/07/29/Me/关于我/</id>
+    <link href="http://nikan1996.coding.me/2018/07/29/Me/%E5%85%B3%E4%BA%8E%E6%88%91/"/>
+    <id>http://nikan1996.coding.me/2018/07/29/Me/关于我/</id>
     <published>2018-07-29T04:57:40.000Z</published>
     <updated>2019-01-29T17:35:38.000Z</updated>
     
@@ -78,7 +78,7 @@
     </summary>
     
     
-      <category term="resume" scheme="http://yoursite.com/tags/resume/"/>
+      <category term="resume" scheme="http://nikan1996.coding.me/tags/resume/"/>
     
   </entry>
   
