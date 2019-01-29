@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="任性的雨">
 <meta property="og:description" content="Python编程规范#    1 背景 2 语言规范 2.1 代码检查工具 2.2 导入(Imports) 2.3 包(Packages) 2.4 异常(Exceptions) 2.5 全局变量(Global variables) 2.6 嵌套、局部、内部类和函数(Nested/Local/Inner Classes and Functions) 2.7 推导式和生成器表达式(Comprehens">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-30T10:07:12.000Z">
+<meta property="og:updated_time" content="2019-01-29T08:52:20.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python编码风格规范">
 <meta name="twitter:description" content="Python编程规范#    1 背景 2 语言规范 2.1 代码检查工具 2.2 导入(Imports) 2.3 包(Packages) 2.4 异常(Exceptions) 2.5 全局变量(Global variables) 2.6 嵌套、局部、内部类和函数(Nested/Local/Inner Classes and Functions) 2.7 推导式和生成器表达式(Comprehens">
@@ -258,7 +258,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Leo Ni">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="http://qiniu-blog.cyhlucky.club/fengbaobao.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -299,6 +299,17 @@
           
 
           
+          
+             <span id="/2018/07/30/Python编码风格规范/" class="leancloud_visitors" data-flag-title="Python编码风格规范">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
           
 
           
@@ -379,9 +390,10 @@
 
 
 
-<h2><span id="1-bei-jing">1 背景</span><a href="#1-bei-jing" class="header-anchor">#</a></h2><p>​        Python是一门动态语言。Python有着非常自由的语法和非常多的特性，开发者可以写出各种充满社会特色主义的代码。本规范的目的不是为了约束开发者的创造力和生产力，而是为了限制开发者的过度个性化，统一团队的代码风格，通过风格一致的代码来更好地进行团队成员之间的协作开发。本规范适用Python3.5以上的版本，部分规范在Python2.7不一定适用。本规范也不推荐开发者继续使用Python2.7开发，Python3会不断地加入新的特性，而Python2.7 到2020年1月1日后将停止被维护。本规范将辅助开发者写出简洁、优雅、高效和风格一致的代码，并且减少踩坑的概率，提升代码的质量，增强开发者的编程规范意识。</p>
-<p>​        本规范主要遵循<a href="https://github.com/google/styleguide/blob/gh-pages/pyguide.md" target="_blank" rel="noopener">google code style</a>和 <a href="https://www.python.org/dev/peps/pep-0008/" target="_blank" rel="noopener">PEP-8</a>。</p>
-<h2><span id="2-yu-yan-gui-fan">2 语言规范</span><a href="#2-yu-yan-gui-fan" class="header-anchor">#</a></h2><h3><span id="2-1-dai-ma-jian-cha-gong-ju">2.1 代码检查工具</span><a href="#2-1-dai-ma-jian-cha-gong-ju" class="header-anchor">#</a></h3><ul>
+<h2><span id="1-bei-jing">1 背景</span><a href="#1-bei-jing" class="header-anchor">#</a></h2><pre><code>Python是一门动态语言。Python有着非常自由的语法和非常多的特性，开发者可以写出各种充满社会特色主义的代码。本规范的目的不是为了约束开发者的创造力和生产力，而是为了限制开发者的过度个性化，统一团队的代码风格，通过风格一致的代码来更好地进行团队成员之间的协作开发。本规范适用Python3.5以上的版本，部分规范在Python2.7不一定适用。本规范也不推荐开发者继续使用Python2.7开发，Python3会不断地加入新的特性，而Python2.7 到2020年1月1日后将停止被维护。本规范将辅助开发者写出简洁、优雅、高效和风格一致的代码，并且减少踩坑的概率，提升代码的质量，增强开发者的编程规范意识。
+
+本规范主要遵循[google code style](https://github.com/google/styleguide/blob/gh-pages/pyguide.md)和 [PEP-8](https://www.python.org/dev/peps/pep-0008/)。
+</code></pre><h2><span id="2-yu-yan-gui-fan">2 语言规范</span><a href="#2-yu-yan-gui-fan" class="header-anchor">#</a></h2><h3><span id="2-1-dai-ma-jian-cha-gong-ju">2.1 代码检查工具</span><a href="#2-1-dai-ma-jian-cha-gong-ju" class="header-anchor">#</a></h3><ul>
 <li>flake8</li>
 <li>IDE自带代码检查工具</li>
 </ul>
@@ -965,6 +977,10 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
+              <img class="site-author-image" itemprop="image"
+                src="http://qiniu-blog.cyhlucky.club/fengbaobao.jpg"
+                alt="Leo Ni" />
+            
               <p class="site-author-name" itemprop="name">Leo Ni</p>
               <p class="site-description motion-element" itemprop="description">运气跟努力，都同样重要。</p>
           </div>
@@ -1109,6 +1125,9 @@
 
 
 
+  
+  
+
 
 
 
@@ -1145,6 +1164,16 @@
   
   
     <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three-waves.min.js"></script>
   
 
 
@@ -1220,6 +1249,113 @@
 
 
   
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("6EvN3vQIpoWOHjanSlb3Kqkq-gzGzoHsz", "SIBUrF6H4IjHul477C2vlYWu");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
 
   
 
