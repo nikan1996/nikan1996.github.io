@@ -254,7 +254,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/09/事件驱动框架脏读问题/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/09/Scrapy/事件驱动框架脏读问题/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Leo Ni">
@@ -273,7 +273,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/08/09/事件驱动框架脏读问题/" itemprop="url">Twisted中遇到的事件驱动框架脏读问题</a></h1>
+                <a class="post-title-link" href="/2018/08/09/Scrapy/事件驱动框架脏读问题/" itemprop="url">Twisted中遇到的事件驱动框架脏读问题</a></h1>
         
 
         <div class="post-meta">
@@ -303,7 +303,7 @@
 
           
           
-             <span id="/2018/08/09/事件驱动框架脏读问题/" class="leancloud_visitors" data-flag-title="Twisted中遇到的事件驱动框架脏读问题">
+             <span id="/2018/08/09/Scrapy/事件驱动框架脏读问题/" class="leancloud_visitors" data-flag-title="Twisted中遇到的事件驱动框架脏读问题">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -335,10 +335,11 @@
 
       
         
-          <h1 id="Twisted中遇到的事件驱动框架脏读问题"><a href="#Twisted中遇到的事件驱动框架脏读问题" class="headerlink" title="Twisted中遇到的事件驱动框架脏读问题"></a>Twisted中遇到的事件驱动框架脏读问题</h1><p>在进行Scrapy中间件开发时遇到了全局变量被修改的问题。类比线程有一个线程安全问题， 协程也有协程安全的问题需要考虑。</p>
+          <h1 id="twisted中遇到的事件驱动框架脏读问题"><a class="markdownIt-Anchor" href="#twisted中遇到的事件驱动框架脏读问题"></a> Twisted中遇到的事件驱动框架脏读问题</h1>
+<p>在进行Scrapy中间件开发时遇到了全局变量被修改的问题。类比线程有一个线程安全问题， 协程也有协程安全的问题需要考虑。</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/08/09/事件驱动框架脏读问题/#more" rel="contents">
+            <a class="btn" href="/2018/08/09/Scrapy/事件驱动框架脏读问题/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -389,7 +390,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/30/Python编码风格规范/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/30/PythonCodeStyle/Python编码风格规范/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Leo Ni">
@@ -408,7 +409,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/07/30/Python编码风格规范/" itemprop="url">Python编码风格规范</a></h1>
+                <a class="post-title-link" href="/2018/07/30/PythonCodeStyle/Python编码风格规范/" itemprop="url">Python编码风格规范</a></h1>
         
 
         <div class="post-meta">
@@ -438,7 +439,7 @@
 
           
           
-             <span id="/2018/07/30/Python编码风格规范/" class="leancloud_visitors" data-flag-title="Python编码风格规范">
+             <span id="/2018/07/30/PythonCodeStyle/Python编码风格规范/" class="leancloud_visitors" data-flag-title="Python编码风格规范">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -470,68 +471,13 @@
 
       
         
-          <h1 id="Python编程规范"><a href="#Python编程规范" class="headerlink" title="Python编程规范"></a>Python编程规范</h1><div class="tocStart"></div>
-
-<!-- toc -->
-<ul>
-<li><a href="#1-bei-jing">1 背景</a></li>
-<li><a href="#2-yu-yan-gui-fan">2 语言规范</a><ul>
-<li><a href="#2-1-dai-ma-jian-cha-gong-ju">2.1 代码检查工具</a></li>
-<li><a href="#2-2-dao-ru-imports">2.2 导入(Imports)</a></li>
-<li><a href="#2-3-bao-packages">2.3 包(Packages)</a></li>
-<li><a href="#2-4-yi-chang-exceptions">2.4 异常(Exceptions)</a></li>
-<li><a href="#2-5-quan-ju-bian-liang-global-variables">2.5 全局变量(Global variables)</a></li>
-<li><a href="#2-6-qian-tao-ju-bu-nei-bu-lei-he-han-shu-nested-local-inner-classes-and-functions">2.6 嵌套、局部、内部类和函数(Nested/Local/Inner Classes and Functions)</a></li>
-<li><a href="#2-7-tui-dao-shi-he-sheng-cheng-qi-biao-da-shi-comprehensions-generator-expressions">2.7 推导式和生成器表达式(Comprehensions &amp; Generator Expressions)</a></li>
-<li><a href="#2-8-mo-ren-die-dai-qi-he-cao-zuo-fu-default-iterators-and-operators">2.8 默认迭代器和操作符(Default Iterators and Operators)</a></li>
-<li><a href="#2-9-sheng-cheng-qi-generators">2.9 生成器(Generators)</a></li>
-<li><a href="#2-10-ni-ming-han-shu-lambda-functions">2.10 匿名函数(Lambda Functions)</a></li>
-<li><a href="#2-11-tiao-jian-biao-da-shi-conditional-expressions">2.11 条件表达式(Conditional Expressions)</a></li>
-<li><a href="#2-12-mo-ren-can-shu-zhi-default-argument-values">2.12 默认参数值(Default Argument Values)</a></li>
-<li><a href="#2-13-shu-xing-properties">2.13 属性(Properties)</a></li>
-<li><a href="#2-14-true-false-de-qiu-zhi-true-false-evaluations">2.14 True/False的求值(True/False evaluations)</a></li>
-<li><a href="#2-15-guo-shi-de-yu-yan-te-xing-deprecated-language-features">2.15 过时的语言特性(Deprecated Language Features)</a></li>
-<li><a href="#2-16-bian-liang-zuo-yong-yu-lexical-scoping">2.16 变量作用域(Lexical Scoping)</a></li>
-<li><a href="#2-17-han-shu-he-fang-fa-zhuang-shi-qi-function-and-method-decorators">2.17 函数和方法装饰器(Function and Method Decorators)</a></li>
-<li><a href="#2-18-xian-cheng-threading">2.18 线程(Threading)</a></li>
-<li><a href="#2-19-qiang-da-de-te-xing-power-features">2.19 强大的特性(Power Features)</a></li>
-<li><a href="#2-20-xian-dai-hua-python-modern-python-python-3-and-from-future-imports">2.20 现代化Python(Modern Python: Python 3 and from __future__ imports)</a></li>
-<li><a href="#2-21-dai-ma-lei-xing-zhu-shi-type-annotated-code">2.21 代码类型注释(Type Annotated Code)</a></li>
-</ul>
-</li>
-<li><a href="#3-python-feng-ge-gui-fan">3 Python风格规范</a><ul>
-<li><a href="#3-1-dai-ma-ge-shi-hua-gong-ju">3.1 代码格式化工具</a></li>
-<li><a href="#3-2-fen-hao-semicolons">3.2 分号(Semicolons)</a></li>
-<li><a href="#3-3-xing-chang-du-line-length">3.3 行长度(Line length)</a></li>
-<li><a href="#3-4-gua-hao-parentheses">3.4 括号(Parentheses)</a></li>
-<li><a href="#3-5-suo-jin-indentation">3.5 缩进(Indentation)</a></li>
-<li><a href="#3-6-kong-xing-blank-lines">3.6 空行(Blank Lines)</a></li>
-<li><a href="#3-7-kong-ge-whitespace">3.7 空格(Whitespace)</a></li>
-<li><a href="#3-8-shebang-xing-shebang-line">3.8 SheBang行(Shebang Line)</a></li>
-<li><a href="#3-9-zhu-shi-he-wen-dang-zi-fu-chuan-comments-and-docstrings">3.9 注释和文档字符串(Comments and Docstrings)</a></li>
-<li><a href="#3-10-lei-classes">3.10 类(Classes)</a></li>
-<li><a href="#3-11-zi-fu-chuan-strings">3.11 字符串(Strings)</a></li>
-<li><a href="#3-12-wen-jian-he-sockets-files-and-sockets">3.12 文件和sockets(Files and Sockets)</a></li>
-<li><a href="#3-13-todo-zhu-shi-todo-comments">3.13 TODO注释(TODO  Comments)</a></li>
-<li><a href="#3-14-dao-ru-ge-shi-hua-imports-formatting">3.14 导入格式化(Imports formatting)</a></li>
-<li><a href="#3-15-yu-ju-statements">3.15 语句(Statements)</a></li>
-<li><a href="#3-16-fang-wen-kong-zhi-access-control">3.16 访问控制(Access Control)</a></li>
-<li><a href="#3-17-ming-ming-naming">3.17 命名(Naming)</a></li>
-<li><a href="#3-18-zhu-han-shu-main">3.18 主函数(Main)</a></li>
-<li><a href="#3-19-han-shu-chang-du-function-length">3.19 函数长度(Function length)</a></li>
-<li><a href="#3-20-lei-xing-zhu-shi-type-annotations">3.20 类型注释(Type Annotations)</a></li>
-</ul>
-</li>
-<li><a href="#5-lin-bie-zeng-yan">5 临别赠言</a></li>
-</ul>
-<!-- tocstop -->
-<div class="tocEnd"></div>
-
-<h2 id="1-背景"><a href="#1-背景" class="headerlink" title="1 背景"></a>1 背景</h2><p>​        Python是一门动态语言。Python有着非常自由的语法和非常多的特性，开发者可以写出各种充满社会特色主义的代码。本规范的目的不是为了约束开发者的创造力和生产力，而是为了限制开发者的过度个性化，统一团队的代码风格，通过风格一致的代码来更好地进行团队成员之间的协作开发。本规范适用Python3.5以上的版本，部分规范在Python2.7不一定适用。本规范也不推荐开发者继续使用Python2.7开发，Python3会不断地加入新的特性，而Python2.7 到2020年1月1日后将停止被维护。本规范将辅助开发者写出简洁、优雅、高效和风格一致的代码，并且减少踩坑的概率，提升代码的质量，增强开发者的编程规范意识。</p>
+          <h1 id="python编程规范"><a class="markdownIt-Anchor" href="#python编程规范"></a> Python编程规范</h1>
+<h2 id="1-背景"><a class="markdownIt-Anchor" href="#1-背景"></a> 1 背景</h2>
+<p>​        Python是一门动态语言。Python有着非常自由的语法和非常多的特性，开发者可以写出各种充满社会特色主义的代码。本规范的目的不是为了约束开发者的创造力和生产力，而是为了限制开发者的过度个性化，统一团队的代码风格，通过风格一致的代码来更好地进行团队成员之间的协作开发。本规范适用Python3.5以上的版本，部分规范在Python2.7不一定适用。本规范也不推荐开发者继续使用Python2.7开发，Python3会不断地加入新的特性，而Python2.7 到2020年1月1日后将停止被维护。本规范将辅助开发者写出简洁、优雅、高效和风格一致的代码，并且减少踩坑的概率，提升代码的质量，增强开发者的编程规范意识。</p>
 <p>​        本规范主要参照<a href="https://github.com/google/styleguide/blob/gh-pages/pyguide.md" target="_blank" rel="noopener">google code style</a>和 <a href="https://www.python.org/dev/peps/pep-0008/" target="_blank" rel="noopener">PEP-8</a>完成。</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/07/30/Python编码风格规范/#more" rel="contents">
+            <a class="btn" href="/2018/07/30/PythonCodeStyle/Python编码风格规范/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -582,7 +528,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/29/关于我/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/29/Me/关于我/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Leo Ni">
@@ -601,7 +547,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/07/29/关于我/" itemprop="url">简历</a></h1>
+                <a class="post-title-link" href="/2018/07/29/Me/关于我/" itemprop="url">简历</a></h1>
         
 
         <div class="post-meta">
@@ -631,7 +577,7 @@
 
           
           
-             <span id="/2018/07/29/关于我/" class="leancloud_visitors" data-flag-title="简历">
+             <span id="/2018/07/29/Me/关于我/" class="leancloud_visitors" data-flag-title="简历">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -663,11 +609,12 @@
 
       
         
-          <h2 id="基本信息"><a href="#基本信息" class="headerlink" title="基本信息"></a>基本信息</h2><p>​    Github: <a href="https://github.com/nikan1996" target="_blank" rel="noopener">https://github.com/nikan1996</a></p>
-<p>​    Email: <a href="mailto:859905874@qq.com" target="_blank" rel="noopener">859905874@qq.com</a></p>
+          <h2 id="基本信息"><a class="markdownIt-Anchor" href="#基本信息"></a> 基本信息</h2>
+<p>​	Github: <a href="https://github.com/nikan1996" target="_blank" rel="noopener">https://github.com/nikan1996</a></p>
+<p>​	Email: <a href="mailto:859905874@qq.com" target="_blank" rel="noopener">859905874@qq.com</a></p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/07/29/关于我/#more" rel="contents">
+            <a class="btn" href="/2018/07/29/Me/关于我/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
