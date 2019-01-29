@@ -74,23 +74,25 @@
 
 
 
+  <link rel="alternate" href="/atom.xml" title="任性的雨" type="application/atom+xml" />
 
 
 
 
 
-<meta name="description" content="Twisted中遇到的事件驱动框架脏读问题#在进行Scrapy中间件开发时遇到了全局变量被修改的问题。类比线程有一个线程安全问题， 协程也有协程安全的问题需要考虑。 为什么会有&amp;quot;线程安全&amp;quot;的问题出现呢？#并行函数是通过Cooperator实现的， 这个Cooperator的特点就是，同时添加多个任务， 一个Cooperator有一个定时器Timer来控制执行时间最多为10ms。">
+
+<meta name="description" content="Twisted中遇到的事件驱动框架脏读问题在进行Scrapy中间件开发时遇到了全局变量被修改的问题。类比线程有一个线程安全问题， 协程也有协程安全的问题需要考虑。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Twisted中遇到的事件驱动框架脏读问题">
 <meta property="og:url" content="http://yoursite.com/2018/08/09/事件驱动框架脏读问题/index.html">
 <meta property="og:site_name" content="任性的雨">
-<meta property="og:description" content="Twisted中遇到的事件驱动框架脏读问题#在进行Scrapy中间件开发时遇到了全局变量被修改的问题。类比线程有一个线程安全问题， 协程也有协程安全的问题需要考虑。 为什么会有&amp;quot;线程安全&amp;quot;的问题出现呢？#并行函数是通过Cooperator实现的， 这个Cooperator的特点就是，同时添加多个任务， 一个Cooperator有一个定时器Timer来控制执行时间最多为10ms。">
+<meta property="og:description" content="Twisted中遇到的事件驱动框架脏读问题在进行Scrapy中间件开发时遇到了全局变量被修改的问题。类比线程有一个线程安全问题， 协程也有协程安全的问题需要考虑。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://p2a2srwhl.bkt.clouddn.com/2018-08-09-052840.png">
-<meta property="og:updated_time" content="2019-01-29T07:13:12.000Z">
+<meta property="og:updated_time" content="2019-01-29T15:41:33.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Twisted中遇到的事件驱动框架脏读问题">
-<meta name="twitter:description" content="Twisted中遇到的事件驱动框架脏读问题#在进行Scrapy中间件开发时遇到了全局变量被修改的问题。类比线程有一个线程安全问题， 协程也有协程安全的问题需要考虑。 为什么会有&amp;quot;线程安全&amp;quot;的问题出现呢？#并行函数是通过Cooperator实现的， 这个Cooperator的特点就是，同时添加多个任务， 一个Cooperator有一个定时器Timer来控制执行时间最多为10ms。">
+<meta name="twitter:description" content="Twisted中遇到的事件驱动框架脏读问题在进行Scrapy中间件开发时遇到了全局变量被修改的问题。类比线程有一个线程安全问题， 协程也有协程安全的问题需要考虑。">
 <meta name="twitter:image" content="http://p2a2srwhl.bkt.clouddn.com/2018-08-09-052840.png">
 
 
@@ -333,6 +335,7 @@
 
       
         <h1><span id="twisted-zhong-yu-dao-de-shi-jian-qu-dong-kuang-jia-zang-du-wen-ti">Twisted中遇到的事件驱动框架脏读问题</span><a href="#twisted-zhong-yu-dao-de-shi-jian-qu-dong-kuang-jia-zang-du-wen-ti" class="header-anchor">#</a></h1><p>在进行Scrapy中间件开发时遇到了全局变量被修改的问题。类比线程有一个线程安全问题， 协程也有协程安全的问题需要考虑。</p>
+<a id="more"></a>
 <h2><span id="wei-shi-me-hui-you-quot-xian-cheng-an-quan-quot-de-wen-ti-chu-xian-ni"><strong>为什么会有<code>&quot;线程安全&quot;</code>的问题出现呢？</strong></span><a href="#wei-shi-me-hui-you-quot-xian-cheng-an-quan-quot-de-wen-ti-chu-xian-ni" class="header-anchor">#</a></h2><p>并行函数是通过<code>Cooperator</code>实现的， 这个<code>Cooperator</code>的特点就是，同时添加多个任务， 一个Cooperator有一个定时器<code>Timer</code>来控制执行时间最多为10ms。也就是说，一个包含了100个item的<code>Cooperator</code>，一次理论上执行最多10ms后就得到下一个周期再执行了。</p>
 <p><img src="http://p2a2srwhl.bkt.clouddn.com/2018-08-09-052840.png" alt="image-20180809031433345"></p>
 <p>当这个<code>Cooperator</code>执行10毫秒后， Twisted框架自动跳出这个<code>Cooperator</code>切换到下一个要执行的任务（函数），如果之后的某一个函数修改了公共变量（全局变量或者类变量）， 再切回该<code>Cooperator</code>去访问该公共变量，这时候读到的值就发生了变化。这里的<code>&quot;线程安全&quot;</code>就是<code>脏读</code>现象。</p>
@@ -477,6 +480,13 @@
 
           </nav>
 
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
           
 
           

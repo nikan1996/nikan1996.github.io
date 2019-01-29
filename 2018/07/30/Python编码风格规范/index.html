@@ -74,23 +74,25 @@
 
 
 
+  <link rel="alternate" href="/atom.xml" title="任性的雨" type="application/atom+xml" />
 
 
 
 
 
-<meta name="description" content="Python编程规范#    1 背景 2 语言规范 2.1 代码检查工具 2.2 导入(Imports) 2.3 包(Packages) 2.4 异常(Exceptions) 2.5 全局变量(Global variables) 2.6 嵌套、局部、内部类和函数(Nested/Local/Inner Classes and Functions) 2.7 推导式和生成器表达式(Comprehens">
+
+<meta name="description" content="Python编程规范    1 背景 2 语言规范 2.1 代码检查工具 2.2 导入(Imports) 2.3 包(Packages) 2.4 异常(Exceptions) 2.5 全局变量(Global variables) 2.6 嵌套、局部、内部类和函数(Nested/Local/Inner Classes and Functions) 2.7 推导式和生成器表达式(Comprehensi">
 <meta name="keywords" content="codestyle python">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python编码风格规范">
 <meta property="og:url" content="http://yoursite.com/2018/07/30/Python编码风格规范/index.html">
 <meta property="og:site_name" content="任性的雨">
-<meta property="og:description" content="Python编程规范#    1 背景 2 语言规范 2.1 代码检查工具 2.2 导入(Imports) 2.3 包(Packages) 2.4 异常(Exceptions) 2.5 全局变量(Global variables) 2.6 嵌套、局部、内部类和函数(Nested/Local/Inner Classes and Functions) 2.7 推导式和生成器表达式(Comprehens">
+<meta property="og:description" content="Python编程规范    1 背景 2 语言规范 2.1 代码检查工具 2.2 导入(Imports) 2.3 包(Packages) 2.4 异常(Exceptions) 2.5 全局变量(Global variables) 2.6 嵌套、局部、内部类和函数(Nested/Local/Inner Classes and Functions) 2.7 推导式和生成器表达式(Comprehensi">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-01-29T08:52:20.000Z">
+<meta property="og:updated_time" content="2019-01-29T15:40:29.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python编码风格规范">
-<meta name="twitter:description" content="Python编程规范#    1 背景 2 语言规范 2.1 代码检查工具 2.2 导入(Imports) 2.3 包(Packages) 2.4 异常(Exceptions) 2.5 全局变量(Global variables) 2.6 嵌套、局部、内部类和函数(Nested/Local/Inner Classes and Functions) 2.7 推导式和生成器表达式(Comprehens">
+<meta name="twitter:description" content="Python编程规范    1 背景 2 语言规范 2.1 代码检查工具 2.2 导入(Imports) 2.3 包(Packages) 2.4 异常(Exceptions) 2.5 全局变量(Global variables) 2.6 嵌套、局部、内部类和函数(Nested/Local/Inner Classes and Functions) 2.7 推导式和生成器表达式(Comprehensi">
 
 
 
@@ -388,12 +390,10 @@
 <!-- tocstop -->
 </div>
 
-
-
-<h2><span id="1-bei-jing">1 背景</span><a href="#1-bei-jing" class="header-anchor">#</a></h2><pre><code>Python是一门动态语言。Python有着非常自由的语法和非常多的特性，开发者可以写出各种充满社会特色主义的代码。本规范的目的不是为了约束开发者的创造力和生产力，而是为了限制开发者的过度个性化，统一团队的代码风格，通过风格一致的代码来更好地进行团队成员之间的协作开发。本规范适用Python3.5以上的版本，部分规范在Python2.7不一定适用。本规范也不推荐开发者继续使用Python2.7开发，Python3会不断地加入新的特性，而Python2.7 到2020年1月1日后将停止被维护。本规范将辅助开发者写出简洁、优雅、高效和风格一致的代码，并且减少踩坑的概率，提升代码的质量，增强开发者的编程规范意识。
-
-本规范主要遵循[google code style](https://github.com/google/styleguide/blob/gh-pages/pyguide.md)和 [PEP-8](https://www.python.org/dev/peps/pep-0008/)。
-</code></pre><h2><span id="2-yu-yan-gui-fan">2 语言规范</span><a href="#2-yu-yan-gui-fan" class="header-anchor">#</a></h2><h3><span id="2-1-dai-ma-jian-cha-gong-ju">2.1 代码检查工具</span><a href="#2-1-dai-ma-jian-cha-gong-ju" class="header-anchor">#</a></h3><ul>
+<h2><span id="1-bei-jing">1 背景</span><a href="#1-bei-jing" class="header-anchor">#</a></h2><p>​        Python是一门动态语言。Python有着非常自由的语法和非常多的特性，开发者可以写出各种充满社会特色主义的代码。本规范的目的不是为了约束开发者的创造力和生产力，而是为了限制开发者的过度个性化，统一团队的代码风格，通过风格一致的代码来更好地进行团队成员之间的协作开发。本规范适用Python3.5以上的版本，部分规范在Python2.7不一定适用。本规范也不推荐开发者继续使用Python2.7开发，Python3会不断地加入新的特性，而Python2.7 到2020年1月1日后将停止被维护。本规范将辅助开发者写出简洁、优雅、高效和风格一致的代码，并且减少踩坑的概率，提升代码的质量，增强开发者的编程规范意识。</p>
+<p>​        本规范主要参照<a href="https://github.com/google/styleguide/blob/gh-pages/pyguide.md" target="_blank" rel="noopener">google code style</a>和 <a href="https://www.python.org/dev/peps/pep-0008/" target="_blank" rel="noopener">PEP-8</a>完成。</p>
+<a id="more"></a>
+<h2><span id="2-yu-yan-gui-fan">2 语言规范</span><a href="#2-yu-yan-gui-fan" class="header-anchor">#</a></h2><h3><span id="2-1-dai-ma-jian-cha-gong-ju">2.1 代码检查工具</span><a href="#2-1-dai-ma-jian-cha-gong-ju" class="header-anchor">#</a></h3><ul>
 <li>flake8</li>
 <li>IDE自带代码检查工具</li>
 </ul>
@@ -1013,6 +1013,13 @@
 
           </nav>
 
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
           
 
           
