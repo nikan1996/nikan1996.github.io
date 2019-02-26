@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://nikan1996.coding.me/"/>
-  <updated>2019-01-30T12:57:59.000Z</updated>
+  <updated>2019-02-26T07:31:53.000Z</updated>
   <id>http://nikan1996.coding.me/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title></title>
+    <link href="http://nikan1996.coding.me/2019/02/26/AIOHTTP-And-Tornado-Benchmark/"/>
+    <id>http://nikan1996.coding.me/2019/02/26/AIOHTTP-And-Tornado-Benchmark/</id>
+    <published>2019-02-26T07:26:00.000Z</published>
+    <updated>2019-02-26T07:31:53.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>AIOHTTP和Tornado都是Python中有名的 Python web框架和异步网络库。</p><p>这里做了一个简单的基准测试，测试代码逻辑比较简单：请求到达时进行睡眠（sleep）。</p><p>基准测试图片如下：</p><p>![image-20190226152908806](/Users/nikan/Library/Application Support/typora-user-images/image-20190226152908806.png)</p><p>可以看到AIOHTTP + uvloop的组合比 tornado快了不少。</p><p>性能：  AIOHTTP + uvloop &gt; AIOHTTP &gt; tornado + uvloop &gt; tornado newstyle &gt; tornado oldstyle</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;AIOHTTP和Tornado都是Python中有名的 Python web框架和异步网络库。&lt;/p&gt;
+&lt;p&gt;这里做了一个简单的基准测试，测试代码逻辑比较简单：请求到达时进行睡眠（sleep）。&lt;/p&gt;
+&lt;p&gt;基准测试图片如下：&lt;/p&gt;
+&lt;p&gt;![image-2019022
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>Scrapy框架及反爬分享</title>
