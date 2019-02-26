@@ -3,7 +3,7 @@
   <entry>
     <title></title>
     <url>%2F2019%2F02%2F26%2FAIOHTTP-And-Tornado-Benchmark%2F</url>
-    <content type="text"><![CDATA[AIOHTTP和Tornado都是Python中有名的 Python web框架和异步网络库。 这里做了一个简单的基准测试，测试代码逻辑比较简单：请求到达时进行睡眠（sleep）。 基准测试图片如下： ![image-20190226152908806](/Users/nikan/Library/Application Support/typora-user-images/image-20190226152908806.png) 可以看到AIOHTTP + uvloop的组合比 tornado快了不少。 性能： AIOHTTP + uvloop &gt; AIOHTTP &gt; tornado + uvloop &gt; tornado newstyle &gt; tornado oldstyle]]></content>
+    <content type="text"><![CDATA[测试环境 aiohttp==3.3.2 tornado==5.1 uvloop==0.11 硬件: Intel Xeon® CPU E5 v4, 3.6 gHz Python 3.6.5 [GCC 6.3.0] linux v4 测试方式 接收请求 测试持续时间: 300秒 AIOHTTP和Tornado都是Python中有名的 Python web框架和异步网络库。 这里做了一个简单的基准测试，测试代码逻辑比较简单：请求到达时进行睡眠（sleep）。 基准测试图片如下： 可以看到AIOHTTP + uvloop的组合比 tornado快了不少。 性能： AIOHTTP + uvloop &gt; AIOHTTP &gt; tornado + uvloop &gt; tornado newstyle &gt; tornado oldstyle 总结：AIOHTTP作为新一代异步框架，速度的确快了不少。当然，对于笔者来说， 性能是一方面，生态周边也是另一方面。 如果是入门阶段，在这两个框架选择，我建议使用AIOHTTP开发，。如果是熟练阶段，那么一切就都取决于你！ 参考]]></content>
   </entry>
   <entry>
     <title><![CDATA[Scrapy框架及反爬分享]]></title>

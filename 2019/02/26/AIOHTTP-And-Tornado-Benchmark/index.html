@@ -81,17 +81,19 @@
 
 
 
-<meta name="description" content="AIOHTTP和Tornado都是Python中有名的 Python web框架和异步网络库。 这里做了一个简单的基准测试，测试代码逻辑比较简单：请求到达时进行睡眠（sleep）。 基准测试图片如下： ![image-20190226152908806](/Users/nikan/Library/Application Support/typora-user-images/image-201902">
+<meta name="description" content="测试环境  aiohttp==3.3.2 tornado==5.1 uvloop==0.11 硬件: Intel Xeon® CPU E5 v4, 3.6 gHz Python 3.6.5 [GCC 6.3.0] linux v4   测试方式  接收请求 测试持续时间: 300秒  AIOHTTP和Tornado都是Python中有名的 Python web框架和异步网络库。 这里做了一个简单">
 <meta property="og:type" content="article">
 <meta property="og:title" content="任性的雨">
 <meta property="og:url" content="http://nikan1996.coding.me/2019/02/26/AIOHTTP-And-Tornado-Benchmark/index.html">
 <meta property="og:site_name" content="任性的雨">
-<meta property="og:description" content="AIOHTTP和Tornado都是Python中有名的 Python web框架和异步网络库。 这里做了一个简单的基准测试，测试代码逻辑比较简单：请求到达时进行睡眠（sleep）。 基准测试图片如下： ![image-20190226152908806](/Users/nikan/Library/Application Support/typora-user-images/image-201902">
+<meta property="og:description" content="测试环境  aiohttp==3.3.2 tornado==5.1 uvloop==0.11 硬件: Intel Xeon® CPU E5 v4, 3.6 gHz Python 3.6.5 [GCC 6.3.0] linux v4   测试方式  接收请求 测试持续时间: 300秒  AIOHTTP和Tornado都是Python中有名的 Python web框架和异步网络库。 这里做了一个简单">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-02-26T07:31:53.000Z">
+<meta property="og:image" content="http://qiniu-blog.cyhlucky.club/2019-02-26-073313.png">
+<meta property="og:updated_time" content="2019-02-26T07:57:10.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="任性的雨">
-<meta name="twitter:description" content="AIOHTTP和Tornado都是Python中有名的 Python web框架和异步网络库。 这里做了一个简单的基准测试，测试代码逻辑比较简单：请求到达时进行睡眠（sleep）。 基准测试图片如下： ![image-20190226152908806](/Users/nikan/Library/Application Support/typora-user-images/image-201902">
+<meta name="twitter:description" content="测试环境  aiohttp==3.3.2 tornado==5.1 uvloop==0.11 硬件: Intel Xeon® CPU E5 v4, 3.6 gHz Python 3.6.5 [GCC 6.3.0] linux v4   测试方式  接收请求 测试持续时间: 300秒  AIOHTTP和Tornado都是Python中有名的 Python web框架和异步网络库。 这里做了一个简单">
+<meta name="twitter:image" content="http://qiniu-blog.cyhlucky.club/2019-02-26-073313.png">
 
 
 
@@ -376,12 +378,27 @@
       
 
       
-        <p>AIOHTTP和Tornado都是Python中有名的 Python web框架和异步网络库。</p>
+        <h2 id="测试环境"><a class="markdownIt-Anchor" href="#测试环境"></a> 测试环境</h2>
+<ul>
+<li>aiohttp==3.3.2</li>
+<li>tornado==5.1</li>
+<li>uvloop==0.11</li>
+<li>硬件: Intel Xeon® CPU E5 v4, 3.6 gHz</li>
+<li>Python 3.6.5 [GCC 6.3.0] linux v4</li>
+</ul>
+<h3 id="测试方式"><a class="markdownIt-Anchor" href="#测试方式"></a> 测试方式</h3>
+<ul>
+<li>接收请求</li>
+<li>测试持续时间: 300秒</li>
+</ul>
+<p>AIOHTTP和Tornado都是Python中有名的 Python web框架和异步网络库。</p>
 <p>这里做了一个简单的基准测试，测试代码逻辑比较简单：请求到达时进行睡眠（sleep）。</p>
 <p>基准测试图片如下：</p>
-<p>![image-20190226152908806](/Users/nikan/Library/Application Support/typora-user-images/image-20190226152908806.png)</p>
+<p><img src="http://qiniu-blog.cyhlucky.club/2019-02-26-073313.png" alt="image-20190226152908806"></p>
 <p>可以看到AIOHTTP + uvloop的组合比 tornado快了不少。</p>
 <p>性能：  AIOHTTP + uvloop &gt; AIOHTTP &gt; tornado + uvloop &gt; tornado newstyle &gt; tornado oldstyle</p>
+<h2 id="总结aiohttp作为新一代异步框架速度的确快了不少-当然对于笔者来说-性能是一方面生态周边也是另一方面-如果是入门阶段在这两个框架选择我建议使用aiohttp开发-如果是熟练阶段那么一切就都取决于你"><a class="markdownIt-Anchor" href="#总结aiohttp作为新一代异步框架速度的确快了不少-当然对于笔者来说-性能是一方面生态周边也是另一方面-如果是入门阶段在这两个框架选择我建议使用aiohttp开发-如果是熟练阶段那么一切就都取决于你"></a> 总结：AIOHTTP作为新一代异步框架，速度的确快了不少。当然，对于笔者来说， 性能是一方面，生态周边也是另一方面。 如果是入门阶段，在这两个框架选择，我建议使用AIOHTTP开发，。如果是熟练阶段，那么一切就都取决于你！</h2>
+<h2 id="参考"><a class="markdownIt-Anchor" href="#参考"></a> 参考</h2>
 
       
     </div>
@@ -484,8 +501,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -556,6 +582,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#测试环境"><span class="nav-text"> 测试环境</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#测试方式"><span class="nav-text"> 测试方式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结aiohttp作为新一代异步框架速度的确快了不少-当然对于笔者来说-性能是一方面生态周边也是另一方面-如果是入门阶段在这两个框架选择我建议使用aiohttp开发-如果是熟练阶段那么一切就都取决于你"><span class="nav-text"> 总结：AIOHTTP作为新一代异步框架，速度的确快了不少。当然，对于笔者来说， 性能是一方面，生态周边也是另一方面。 如果是入门阶段，在这两个框架选择，我建议使用AIOHTTP开发，。如果是熟练阶段，那么一切就都取决于你！</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-text"> 参考</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
