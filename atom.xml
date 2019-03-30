@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://nikan1996.coding.me/"/>
-  <updated>2019-01-30T12:57:59.000Z</updated>
+  <updated>2019-03-30T17:44:05.000Z</updated>
   <id>http://nikan1996.coding.me/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>为什么IP、TCP和UDP的校验和是用反码进行运算</title>
+    <link href="http://nikan1996.coding.me/2019/03/31/ComputerNetwork/%E4%B8%BA%E4%BB%80%E4%B9%88IP%E3%80%81TCP%E5%92%8CUDP%E7%9A%84%E6%A0%A1%E9%AA%8C%E5%92%8C%E6%98%AF%E7%94%A8%E5%8F%8D%E7%A0%81%E8%BF%9B%E8%A1%8C%E8%BF%90%E7%AE%97%EF%BC%9F/"/>
+    <id>http://nikan1996.coding.me/2019/03/31/ComputerNetwork/为什么IP、TCP和UDP的校验和是用反码进行运算？/</id>
+    <published>2019-03-31T12:57:58.000Z</published>
+    <updated>2019-03-30T17:44:05.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="为什么ip-tcp和udp的校验和是用反码进行运算"><a class="markdownIt-Anchor" href="#为什么ip-tcp和udp的校验和是用反码进行运算"></a> 为什么IP、TCP和UDP的校验和是用反码进行运算？</h2><p>在学习计算机网络的传输层协议UDP时我发现UDP的校验和（checksum）的计算过程如下：</p><p>1.将发送的进行检验和运算的数据分成若干个16位，并将每个16位当成整数。</p><p>2.对这些16位的二进制数进行1的补码和(one’s complement sum)运算，累加的结果再取反码即生成了checksum。</p><p>为什么要用反码（正确的叫法应该是1的补码和）？</p><p>我们知道，所有计算机都使用了 2的补码(two’s complement)来表示，参与整数计算。</p><p>当进行checksum的时候，<strong>正常情况</strong>下用2的补码运算。</p><p>这里举个在八位机器下的例子：</p><p>-3 + 5 = 2</p><p>使用2的补码计算：</p><p>FD + 05 = 01 02<br>需要丢弃最高位01 得到正确结果。</p><p>而使用1的补码计算：</p><p>FC + 05 = 01 01</p><p>把高位01和最低有效位01相加得到正确结果。</p><p>计算机是分为大端（Big Endian）和小端（Little Endian）的，如果使用了2的补码，那么舍弃高位的值容易在大端和小端系统的通信之间出现 校验和不一致的结果。</p><p>而使用1的补码来计算校验和是<strong>不用区分大端和小端</strong>的。</p><p>更多详细的说明可以查看参考文章原文。</p><h2 id="参考"><a class="markdownIt-Anchor" href="#参考"></a> 参考</h2><p><a href="http://www.netfor2.com/checksum.html" target="_blank" rel="noopener">1.校验和</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;为什么ip-tcp和udp的校验和是用反码进行运算&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#为什么ip-tcp和udp的校验和是用反码进行运算&quot;&gt;&lt;/a&gt; 为什么IP、TCP和UDP的校验和是用反码进行运算？&lt;/h2&gt;
+&lt;p&gt;在学
+      
+    
+    </summary>
+    
+    
+      <category term="checksum" scheme="http://nikan1996.coding.me/tags/checksum/"/>
+    
+      <category term="tcp" scheme="http://nikan1996.coding.me/tags/tcp/"/>
+    
+  </entry>
   
   <entry>
     <title>Scrapy框架及反爬分享</title>
