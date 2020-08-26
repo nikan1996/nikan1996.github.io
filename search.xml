@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Sqlalchemy的json字段更新问题]]></title>
+    <url>%2F2020%2F08%2F27%2FSqlalchemy-json-update%2F</url>
+    <content type="text"><![CDATA[Sqlalchemy的json字段更新问题 在使用Sqlalchemy orm更新mysql的json字段时，我使用了更新dict的部分值，然后进行commit，发现json字段并没有更新到数据库中。 以下是问题的部分代码片段 在修改content对象的部分值出错。 12345678910# 模型定义class Page(Model): content = Column(db.JSON) ...# 部分逻辑content = page.contentcontent['field'] = ...db.session.add(page)db.session.commit() 但是如果是 直接替换content对象，那么是可以更新的 1234content = new_content # 新的一个dict对象page.content = contentdb.session.add(page)db.session.commit() 所以这是sqlalchemy有一个“追踪”Column值的变化机制在起作用。 在我查阅文档和stackoverflow后 发现官方文档提供了对可变对象的值修改的扩展： https://docs.sqlalchemy.org/en/13/orm/extensions/mutable.html#module-sqlalchemy.ext.mutable 以及stackoverflow找到的 可变对象的追踪问题： https://stackoverflow.com/questions/39782773/mutable-json-object-type-not-tracking-changes-sqlalchemy-sqlalchemy-json 通过文档的方法，使用MutableDict.as_mutable函数可以让修改部分值生效。 123class Page(Model): content = Column(MutableDict.as_mutable(db.JSON)) #通过mutable模块支持JSON类型的字段追踪 ... 而其它可变对象也可以通过这个as_mutable函数实现。]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
+      <tags>
+        <tag>codestyle python</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[为什么IP、TCP和UDP的校验和是用反码进行运算]]></title>
     <url>%2F2019%2F03%2F31%2FComputerNetwork%2F%E4%B8%BA%E4%BB%80%E4%B9%88IP%E3%80%81TCP%E5%92%8CUDP%E7%9A%84%E6%A0%A1%E9%AA%8C%E5%92%8C%E6%98%AF%E7%94%A8%E5%8F%8D%E7%A0%81%E8%BF%9B%E8%A1%8C%E8%BF%90%E7%AE%97%EF%BC%9F%2F</url>
     <content type="text"><![CDATA[为什么IP、TCP和UDP的校验和是用反码进行运算？ 在学习计算机网络的传输层协议UDP时我发现UDP的校验和（checksum）的计算过程如下： 1.将发送的进行检验和运算的数据分成若干个16位，并将每个16位当成整数。 2.对这些16位的二进制数进行1的补码和(one’s complement sum)运算，累加的结果再取反码即生成了checksum。 为什么要用反码（正确的叫法应该是1的补码和）？ 我们知道，所有计算机都使用了 2的补码(two’s complement)来表示，参与整数计算。 当进行checksum的时候，正常情况下用2的补码运算。 这里举个在八位机器下的例子： -3 + 5 = 2 使用2的补码计算： FD + 05 = 01 02 需要丢弃最高位01 得到正确结果。 而使用1的补码计算： FC + 05 = 01 01 把高位01和最低有效位01相加得到正确结果。 计算机是分为大端（Big Endian）和小端（Little Endian）的，如果使用了2的补码，那么舍弃高位的值容易在大端和小端系统的通信之间出现 校验和不一致的结果。 而使用1的补码来计算校验和是不用区分大端和小端的。 更多详细的说明可以查看参考文章原文。 参考]]></content>
@@ -48,14 +59,6 @@
       </categories>
       <tags>
         <tag>codestyle python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[简历]]></title>
-    <url>%2F2018%2F07%2F29%2FMe%2F%E5%85%B3%E4%BA%8E%E6%88%91%2F</url>
-    <content type="text"><![CDATA[基本信息 ​ Github: https://github.com/nikan1996 ​ Email: 859905874@qq.com 教育经历 ​ 2014年9月-2018年7月本科毕业于浙江工业大学。 实习经历 2017年3月-2017年9月 数梦工场，职位：后台开发工程师。 2017年10月-2018年6月 艾耕科技，职位：爬虫开发工程师。 工作经历 2018年7月-2019年1月 艾耕科技， 职位：数据平台开发工程师。 兴趣爱好 健身 音乐 未完待续…]]></content>
-      <tags>
-        <tag>resume</tag>
       </tags>
   </entry>
 </search>

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://nikan1996.coding.me/"/>
-  <updated>2019-03-31T05:25:33.000Z</updated>
+  <updated>2020-08-26T17:28:49.758Z</updated>
   <id>http://nikan1996.coding.me/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Sqlalchemy的json字段更新问题</title>
+    <link href="http://nikan1996.coding.me/2020/08/27/Sqlalchemy-json-update/"/>
+    <id>http://nikan1996.coding.me/2020/08/27/Sqlalchemy-json-update/</id>
+    <published>2020-08-26T19:54:20.000Z</published>
+    <updated>2020-08-26T17:28:49.758Z</updated>
+    
+    <content type="html"><![CDATA[<p>Sqlalchemy的json字段更新问题</p><p>在使用Sqlalchemy orm更新mysql的json字段时，我使用了更新dict的部分值，然后进行commit，发现json字段并没有更新到数据库中。</p><p>以下是问题的部分代码片段</p><p>在修改content对象的部分值出错。</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 模型定义</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Page</span><span class="params">(Model)</span>:</span></span><br><span class="line">  content = Column(db.JSON)</span><br><span class="line">  ...</span><br><span class="line"><span class="comment"># 部分逻辑</span></span><br><span class="line">content = page.content</span><br><span class="line">content[<span class="string">'field'</span>] = ...</span><br><span class="line"></span><br><span class="line">db.session.add(page)</span><br><span class="line">db.session.commit()</span><br></pre></td></tr></table></figure><p>但是如果是 直接替换content对象，那么是可以更新的</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">content = new_content <span class="comment"># 新的一个dict对象</span></span><br><span class="line">page.content = content</span><br><span class="line">db.session.add(page)</span><br><span class="line">db.session.commit()</span><br></pre></td></tr></table></figure><p>所以这是sqlalchemy有一个“追踪”Column值的变化机制在起作用。</p><p>在我查阅文档和stackoverflow后</p><p>发现官方文档提供了对可变对象的值修改的扩展：</p><p><a href="https://docs.sqlalchemy.org/en/13/orm/extensions/mutable.html#module-sqlalchemy.ext.mutable" target="_blank" rel="noopener">https://docs.sqlalchemy.org/en/13/orm/extensions/mutable.html#module-sqlalchemy.ext.mutable</a></p><p>以及stackoverflow找到的 可变对象的追踪问题：</p><p><a href="https://stackoverflow.com/questions/39782773/mutable-json-object-type-not-tracking-changes-sqlalchemy-sqlalchemy-json" target="_blank" rel="noopener">https://stackoverflow.com/questions/39782773/mutable-json-object-type-not-tracking-changes-sqlalchemy-sqlalchemy-json</a></p><p>通过文档的方法，使用MutableDict.as_mutable函数可以让修改部分值生效。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">class Page(Model):</span><br><span class="line">  content = Column(MutableDict.as_mutable(db.JSON))  #通过mutable模块支持JSON类型的字段追踪</span><br><span class="line">  ...</span><br></pre></td></tr></table></figure><p>而其它可变对象也可以通过这个as_mutable函数实现。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;Sqlalchemy的json字段更新问题&lt;/p&gt;
+&lt;p&gt;在使用Sqlalchemy orm更新mysql的json字段时，我使用了更新dict的部分值，然后进行commit，发现json字段并没有更新到数据库中。&lt;/p&gt;
+&lt;p&gt;以下是问题的部分代码片段&lt;/p&gt;
+&lt;p&gt;在修
+      
+    
+    </summary>
+    
+      <category term="python" scheme="http://nikan1996.coding.me/categories/python/"/>
+    
+    
+      <category term="codestyle python" scheme="http://nikan1996.coding.me/tags/codestyle-python/"/>
+    
+  </entry>
   
   <entry>
     <title>为什么IP、TCP和UDP的校验和是用反码进行运算</title>
@@ -140,28 +168,6 @@
     
     
       <category term="codestyle python" scheme="http://nikan1996.coding.me/tags/codestyle-python/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>简历</title>
-    <link href="http://nikan1996.coding.me/2018/07/29/Me/%E5%85%B3%E4%BA%8E%E6%88%91/"/>
-    <id>http://nikan1996.coding.me/2018/07/29/Me/关于我/</id>
-    <published>2018-07-29T04:57:40.000Z</published>
-    <updated>2019-01-29T18:23:46.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="基本信息"><a class="markdownIt-Anchor" href="#基本信息"></a> 基本信息</h2><p>​Github: <a href="https://github.com/nikan1996" target="_blank" rel="noopener">https://github.com/nikan1996</a></p><p>​Email: <a href="mailto:859905874@qq.com" target="_blank" rel="noopener">859905874@qq.com</a></p><a id="more"></a><h2 id="教育经历"><a class="markdownIt-Anchor" href="#教育经历"></a> 教育经历</h2><p>​2014年9月-2018年7月本科毕业于浙江工业大学。</p><h2 id="实习经历"><a class="markdownIt-Anchor" href="#实习经历"></a> 实习经历</h2><ul><li><p>2017年3月-2017年9月 <a href="http://www.dtdream.com/" target="_blank" rel="noopener">数梦工场</a>，职位：后台开发工程师。</p></li><li><p>2017年10月-2018年6月 <a href="https://www.eigentech.ai/en/" target="_blank" rel="noopener">艾耕科技</a>，职位：爬虫开发工程师。</p></li></ul><h2 id="工作经历"><a class="markdownIt-Anchor" href="#工作经历"></a> 工作经历</h2><ul><li>2018年7月-2019年1月 <a href="https://www.eigentech.ai/en/" target="_blank" rel="noopener">艾耕科技</a>， 职位：数据平台开发工程师。</li></ul><h2 id="兴趣爱好"><a class="markdownIt-Anchor" href="#兴趣爱好"></a> 兴趣爱好</h2><p>健身</p><p>音乐</p><p>未完待续…</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;基本信息&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#基本信息&quot;&gt;&lt;/a&gt; 基本信息&lt;/h2&gt;
-&lt;p&gt;​	Github: &lt;a href=&quot;https://github.com/nikan1996&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://github.com/nikan1996&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;​	Email: &lt;a href=&quot;mailto:859905874@qq.com&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;859905874@qq.com&lt;/a&gt;&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="resume" scheme="http://nikan1996.coding.me/tags/resume/"/>
     
   </entry>
   
